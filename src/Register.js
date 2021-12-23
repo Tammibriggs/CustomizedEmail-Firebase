@@ -14,6 +14,12 @@ function Register() {
   const history = useHistory()
   const {setTimeActive} = useAuthValue()
 
+  const stateReset = () => {
+    setEmail('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
   const validatePassword = () => {
     let isValid = true
     if (password !== '' && confirmPassword !== ''){
@@ -38,11 +44,11 @@ function Register() {
             history.push('/verify-email')
           }).catch((err) => alert(err.message))
         })
-        .catch(err => setError(err.message))
+        .catch(err => {
+          setError(err.message)
+          stateReset()
+        })
     }
-    setEmail('')
-    setPassword('')
-    setConfirmPassword('')
   }
 
   return (
