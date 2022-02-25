@@ -1,0 +1,22 @@
+{
+  "name": "customisedemail-firebase",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Taminoturoko Briggs",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "firebase-admin": "^10.0.2",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
+  }
+}
