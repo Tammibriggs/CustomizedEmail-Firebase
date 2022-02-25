@@ -307,16 +307,18 @@
 								<tr>
 									<td>
 										<div class="text" style="padding: 0 2.5em; text-align: center;">
-											<h2>Hi Tammibriggs</h2>
+											<h2>Hi <%= usersName %></h2>
 											<h3>We need to confirm that this is you. Click below to verify your email address</h3>
-											<p><a href="#" class="btn btn-primary">Verify Email</a></p>
+											<p><a href="<%= link %>" class="btn btn-primary">Verify email</a></p>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</td>
 					</tr><!-- end tr -->
-				<!-- 1 Column Text + Button : END -->
+					<tr style="display: none;">
+						<td><%= randomNumber %></td>
+					</tr>
 				</table>
 			</div>
 		</center>
