@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Profile from './Profile'
 import Register from './Register'
 import VerifyEmail from './VerifyEmail';
@@ -26,9 +26,14 @@ function App() {
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Switch>
           <PrivateRoute exact path="/" component={Profile} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path='/verify-email' component={VerifyEmail} /> 
+          {!currentUser?.emailVerified
+            ? <>
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path='/verify-email' component={VerifyEmail} /> 
+              </>
+            : <Redirect to='/'/>
+          }
         </Switch>  
       </AuthProvider>
   </Router>
