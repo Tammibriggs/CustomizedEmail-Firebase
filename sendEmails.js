@@ -7,16 +7,17 @@ const verifiedEmail = process.env.EMAIL_USER
 // Initialize SendGrid
 sgMail.setApiKey(sendGridKey)
 
-module.exports = function sendVerificationEmail(receiversEmail, template, link){
+module.exports = function sendVerificationEmail(userEmail, template, actionLink){
   const message = {
     from: {
       name: 'Test site@noreply',
       email: verifiedEmail
     },
-    to: receiversEmail,
+    to: userEmail,
     subject: 'Verify your email address',
-    text: `Hello Tammy \n Follow this link to verify your email address.
-    ${link}\nif you didn't ask to verify this address, you can ignore this email.\nThanks.
+    text: `Please verify you email\n
+      We need to confirm that this is you. Click the link below to verify your email address\n
+      ${actionLink}
     `,
     html: template
   }

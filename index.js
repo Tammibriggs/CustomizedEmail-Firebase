@@ -1,4 +1,4 @@
-const app = require('express')()
+const express = require('express')
 const Cors = require('cors')
 const dotenv = require('./dotenvConfig')()
 const admin = require("firebase-admin")
@@ -18,40 +18,32 @@ const adminApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 })
 
-app.set('view engine', 'ejs')
+const app = express()
 
+app.set('view engine', 'ejs')
 app.use(Cors(corsOption))
+app.use(express.json())
 
 // routes
-app.get('/send-custom-verification-email', (req, res) => {
-  const userEmail = 'godsfirstbriggs@gmail.com'
-  const actionCodeSettings = {
-      url: 'https://www.example.com/'
-  }
+app.post('/send-custom-verification-email', async (req, res) => {
+  const {userEmail, redirectUrl} = req.body
 
-  getAuth()
-  .generateEmailVerificationLink(userEmail, actionCodeSettings)
-  .then((link) => {
-      ejs.renderFile('views/verify-email.ejs', {
-        usersName: 'Tammibriggs',
-        link,
-        randomNumber: Math.random()
-      })
-      .then((template) => {
-        sendVerificationEmail(userEmail, template, link)
-          .then(() => {
-              res.status(200).json({status: 'ok'})
-          })
-          .catch((error) => {
-              res.status(500).json({status: 'error', error})
-          })
-      }).catch(error => {
-          res.status(500).json({status:'error', error})
-      })
+  const actionCodeSettings = {
+    url: redirectUrl
+  }
+  
+  try{
+    const actionLink =  await getAuth()
+    .generateEmailVerificationLink(userEmail, actionCodeSettings)
+    const template = await ejs.renderFile('views/verify-email.ejs', {
+      actionLink,
+      randomNumber: Math.random()
     })
-    .catch((error) => {
-      res.status(500).json({status:'error', error: error})
-    })
+    await sendVerificationEmail(userEmail, template, actionLink)
+    res.status(200).json({status: 'ok'})
+  }catch(error){
+    res.json({status:'error', error})
+  }
 })
 
 // listener
