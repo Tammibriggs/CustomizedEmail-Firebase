@@ -25,6 +25,10 @@ app.use(Cors(corsOption))
 app.use(express.json())
 
 // routes
+app.get('/', (req, res) => {
+  res.send('welcom to my api')
+})
+
 app.post('/send-custom-verification-email', async (req, res) => {
   const {userEmail, redirectUrl} = req.body
 

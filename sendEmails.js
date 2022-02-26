@@ -2,7 +2,7 @@ const dotenv = require('./dotenvConfig')()
 const sgMail = require('@sendgrid/mail')
 
 const sendGridKey = process.env.SENDGRID_API_KEY
-const verifiedEmail = process.env.EMAIL_USER
+const verifiedEmail = process.env.VERIFIED_SENDER
  
 // Initialize SendGrid
 sgMail.setApiKey(sendGridKey)
