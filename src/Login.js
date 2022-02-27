@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import './forms.css'
-import {signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {signInWithEmailAndPassword} from 'firebase/auth'
 import {auth} from './firebase'
 import {useHistory} from 'react-router-dom'
 import {useAuthValue} from './AuthContext'
@@ -20,15 +20,25 @@ function Login(){
     signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       if(!auth.currentUser.emailVerified) {
-        sendEmailVerification(auth.currentUser)
+        fetch('https://customized-email-firebase.herokuapp.com/send-custom-verification-email', {
+          method: 'POST',
+          body: JSON.stringify({
+            userEmail: auth.currentUser.email,
+            redirectUrl: 'http://localhost:3000'
+          }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        })
         .then(() => {
           setTimeActive(true)
           history.push('/verify-email')
         })
-      .catch(err => alert(err.message))
-    }else{
-      history.push('/')
-    }
+        .catch(err => alert(err.message))
+      }else{
+        history.push('/')
+      }
     })
     .catch(err => setError(err.message))
   }

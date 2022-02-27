@@ -2,7 +2,7 @@ import {useState} from 'react'
 import './forms.css'
 import {auth} from './firebase'
 import {useHistory, Link} from 'react-router-dom'
-import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth'
+import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {useAuthValue} from './AuthContext'
 
 function Register() {
@@ -38,11 +38,22 @@ function Register() {
       // Create a new user with email and password using firebase
         createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          sendEmailVerification(auth.currentUser)   
+          fetch('https://customized-email-firebase.herokuapp.com/send-custom-verification-email', {
+          method: 'POST',
+          body: JSON.stringify({
+            userEmail: auth.currentUser.email,
+            redirectUrl: 'http://localhost:3000'
+          }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          })
           .then(() => {
             setTimeActive(true)
             history.push('/verify-email')
-          }).catch((err) => alert(err.message))
+          })
+          .catch(err => alert(err.message))
         })
         .catch(err => {
           setError(err.message)
