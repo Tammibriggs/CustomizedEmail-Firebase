@@ -14,29 +14,34 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null)
   const [timeActive, setTimeActive] = useState(false)
+  const [fetching, setFetching] = useState(false)
 
   useEffect(() => {
+    setFetching(true)
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
+      setFetching(false)
     })
   }, [])
 
   return (
     <Router>
-      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
-        <Switch>
-          <PrivateRoute exact path="/" component={Profile} />
-          {!currentUser?.emailVerified
-            ? <>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path='/verify-email' component={VerifyEmail} /> 
-              </>
-            : <Redirect to='/'/>
-          }
-        </Switch>  
-      </AuthProvider>
-  </Router>
+      {!fetching &&
+        <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
+          <Switch>
+            <PrivateRoute exact path="/" component={Profile} />
+            {!currentUser?.emailVerified
+              ? <>
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path='/verify-email' component={VerifyEmail} /> 
+                </>
+              : <Redirect to='/'/>
+            }
+          </Switch>  
+        </AuthProvider>
+      }
+    </Router>
   );
 }
 
