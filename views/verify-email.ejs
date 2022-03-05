@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
     <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
-    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
-
+    <title>Email address verification</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
     <!-- CSS Reset : BEGIN -->
@@ -59,66 +58,65 @@
 					text-decoration: none;
 			}
 
-			/* What it does: A work-around for email clients meddling in triggered links. */
-			*[x-apple-data-detectors],  /* iOS */
-			.unstyle-auto-detected-links *,
-			.aBn {
-					border-bottom: 0 !important;
-					cursor: default !important;
-					color: inherit !important;
-					text-decoration: none !important;
-					font-size: inherit !important;
-					font-family: inherit !important;
-					font-weight: inherit !important;
-					line-height: inherit !important;
-			}
+		/* What it does: A work-around for email clients meddling in triggered links. */
+		*[x-apple-data-detectors],  /* iOS */
+		.unstyle-auto-detected-links *,
+		.aBn {
+				border-bottom: 0 !important;
+				cursor: default !important;
+				color: inherit !important;
+				text-decoration: none !important;
+				font-size: inherit !important;
+				font-family: inherit !important;
+				font-weight: inherit !important;
+				line-height: inherit !important;
+		}
 
-			/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
-			.a6S {
-					display: none !important;
-					opacity: 0.01 !important;
-			}
+		/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+		.a6S {
+				display: none !important;
+				opacity: 0.01 !important;
+		}
 
-			/* What it does: Prevents Gmail from changing the text color in conversation threads. */
-			.im {
-					color: inherit !important;
-			}
+		/* What it does: Prevents Gmail from changing the text color in conversation threads. */
+		.im {
+				color: inherit !important;
+		}
 
-			/* If the above doesn't work, add a .g-img class to any image in question. */
-			img.g-img + div {
-					display: none !important;
-			}
+		/* If the above doesn't work, add a .g-img class to any image in question. */
+		img.g-img + div {
+				display: none !important;
+		}
 
-			/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
-			/* Create one of these media queries for each additional viewport size you'd like to fix */
+		/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+		/* Create one of these media queries for each additional viewport size you'd like to fix */
 
-			/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
-			@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-					u ~ div .email-container {
-							min-width: 320px !important;
-					}
-			}
-			/* iPhone 6, 6S, 7, 8, and X */
-			@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-					u ~ div .email-container {
-							min-width: 375px !important;
-					}
-			}
-			/* iPhone 6+, 7+, and 8+ */
-			@media only screen and (min-device-width: 414px) {
-					u ~ div .email-container {
-							min-width: 414px !important;
-					}
-			}
+		/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+		@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+				u ~ div .email-container {
+						min-width: 320px !important;
+				}
+		}
+		/* iPhone 6, 6S, 7, 8, and X */
+		@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+				u ~ div .email-container {
+						min-width: 375px !important;
+				}
+		}
+		/* iPhone 6+, 7+, and 8+ */
+		@media only screen and (min-device-width: 414px) {
+				u ~ div .email-container {
+						min-width: 414px !important;
+				}
+		}
 
-			</style>
+		</style>
+		<!-- CSS Reset : END -->
 
-			<!-- CSS Reset : END -->
+		<!-- Progressive Enhancements : BEGIN -->
+		<style>
 
-			<!-- Progressive Enhancements : BEGIN -->
-			<style>
-
-						.primary{
+			.primary{
 				background: #30e3ca;
 			}
 			.bg_white{
@@ -137,42 +135,6 @@
 				padding:2.5em;
 			}
 
-			/*BUTTON*/
-			.btn{
-				padding: 10px 35px;
-				display: inline-block;
-			}
-			.btn.btn-primary{
-				border-radius: 5px;
-				background: #5D91E8;
-				color: #ffffff;
-			}
-			.btn.btn-white{
-				border-radius: 5px;
-				background: #ffffff;
-				color: #000000;
-			}
-			.btn.btn-white-outline{
-				border-radius: 5px;
-				background: transparent;
-				border: 1px solid #fff;
-				color: #fff;
-			}
-			.btn.btn-black-outline{
-				border-radius: 0px;
-				background: transparent;
-				border: 2px solid #000;
-				color: #000;
-				font-weight: 700;
-			}
-
-			h1,h2,h3,h4,h5,h6{
-				font-family: 'Lato', sans-serif;
-				color: #000000;
-				margin-top: 0;
-				font-weight: 400;
-			}
-
 			body{
 				font-family: 'Lato', sans-serif;
 				font-weight: 400;
@@ -180,23 +142,7 @@
 				line-height: 1.8;
 				color: rgba(0,0,0,.4);
 			}
-
-			a{
-				color: #30e3ca;
-			}
-
-			/*LOGO*/
-
-			.logo h1{
-				margin: 0;
-			}
-			.logo h1 a{
-				color: #30e3ca;
-				font-size: 24px;
-				font-weight: 700;
-				font-family: 'Lato', sans-serif;
-			}
-
+			
 			/*HERO*/
 			.hero{
 				position: relative;
@@ -221,106 +167,62 @@
 				font-weight: 600;
 				color: #30e3ca;
 			}
-
-
-			/*HEADING SECTION*/
-			.heading-section h2{
-				color: #000000;
-				font-size: 28px;
-				margin-top: 0;
-				line-height: 1.4;
-				font-weight: 400;
+			
+			.email-body{
+				display: block;
+				color: black;
+				line-height: 32px;
+				font-weight: 300;
+				font-family: -apple-system,system-ui,BlinkMacSystemFont,sans-serif;
+				font-size: 22px;
 			}
-			.heading-section .subheading{
-				margin-bottom: 20px !important;
-				display: inline-block;
-				font-size: 13px;
-				text-transform: uppercase;
-				letter-spacing: 2px;
-				color: rgba(0,0,0,.4);
-				position: relative;
-			}
-			.heading-section .subheading::after{
-				position: absolute;
-				left: 0;
-				right: 0;
-				bottom: -10px;
-				content: '';
-				width: 100%;
-				height: 2px;
-				background: #30e3ca;
-				margin: 0 auto;
-			}
-
-			.heading-section-white{
-				color: rgba(255,255,255,.8);
-			}
-			.heading-section-white h2{
-				line-height: 1;
-				padding-bottom: 0;
-			}
-			.heading-section-white h2{
-				color: #ffffff;
-			}
-			.heading-section-white .subheading{
-				margin-bottom: 0;
-				display: inline-block;
-				font-size: 13px;
-				text-transform: uppercase;
-				letter-spacing: 2px;
-				color: rgba(255,255,255,.4);
-			}
-
-
-			ul.social{
-				padding: 0;
-			}
-			ul.social li{
-				display: inline-block;
-				margin-right: 10px;
-			}
-
 			@media (max-width:400px){
 				.hero img{
-						width: 200px !important;
-					}
+					width: 200px !important;
+				}
 			}
 		</style>
 	</head>
 
 	<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1; display: flex; align-items: center; justify-content: center;">
-		<center style="width: 100%; background-color: #f1f1f1;">
+		<div style="width: 100%; background-color: #f1f1f1;">
 			<div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-				&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+				Hello, click on the button below to verify your email address
 			</div>
 			<div style="max-width: 600px; margin: 0 auto;" class="email-container">
 				<!-- BEGIN BODY -->
 				<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
 					<tr>
 						<td valign="middle" class="hero bg_white" style="padding: 3em 0 2em 0;">
-							<img src="https://github.com/ColorlibHQ/email-templates/blob/master/10/images/email.png?raw=true" alt="" style="width: 250px; max-width: 600px; height: auto; margin: auto; display: block;">
+							<img src="https://github.com/ColorlibHQ/email-templates/blob/master/10/images/email.png?raw=true" alt="" class="g-img" style="width: 200px; height: auto; margin: auto; display: block;">
 						</td>
-					</tr><!-- end tr -->
+					</tr>
+					<!-- end tr -->
 					<tr>
 						<td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
 							<table>
 								<tr>
 									<td>
 										<div class="text" style="padding: 0 2.5em; text-align: center;">
-											<h2>Please Verify your email</h2>
-											<h3>We need to confirm that this is you. Click below to verify your email address</h3>
-											<p><a href="<%= actionLink %>" class="btn btn-primary">Verify email</a></p>
+											<h2 style="margin-bottom: 20px; font-size: 32px;">Verify your email address</h2>
+											<p class="email-body">
+												Thanks for signup with us. Click on the button below to verify your email address.
+											</p>
+											<a href="<%= actionLink %>" target="_blank" style="padding:15px 40px; background-color: #5D91E8; color: white;">Verify your email</a>
+											<p class="email-body">
+												If this email wasn't intended for you feel free to delete it.<br/>
+											</p>
 										</div>
 									</td>
 								</tr>
 							</table>
 						</td>
-					</tr><!-- end tr -->
-					<tr style="display: none;">
-						<td><%= randomNumber %></td>
+					</tr>
+					<!-- end tr -->
+					<span style="color: #f1f1f1; display: none;"><%= randomNumber %></span>
 					</tr>
 				</table>
 			</div>
-		</center>
+		</div>
 	</body>
 </html>
